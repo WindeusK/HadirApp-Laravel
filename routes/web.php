@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'getLoginPage'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+});
