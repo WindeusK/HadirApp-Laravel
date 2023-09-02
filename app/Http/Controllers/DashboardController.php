@@ -12,7 +12,7 @@ class DashboardController extends Controller
     public function dashboard () {
         $user = Auth::user();
         if (Gate::allows('admin', $user)) {
-            return view('dashboard.guru', ['user' => $user]);
+            return redirect('/admin' + '/dashboard');
         } else {
             return view('dashboard.siswa', ['user' => $user]);
         }
