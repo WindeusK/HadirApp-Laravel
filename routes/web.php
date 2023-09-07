@@ -22,7 +22,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
     //Admin Page
-    Route::get('/admin/dashboard',);
+    Route::get('/admin/dashboard');
 
     Route::get('/admin', fn () => redirect('/admin/dashboard'));
 });
