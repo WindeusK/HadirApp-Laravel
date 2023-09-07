@@ -15,6 +15,8 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+Route::get('/', fn () => view('welcome-page'));
+
 Route::get('/login', [LoginController::class, 'getLoginPage'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
@@ -22,7 +24,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
     //Admin Page
-    Route::get('/admin/dashboard',);
-
-    Route::get('/admin', fn () => redirect('/admin/dashboard'));
+    Route::group(['prefix' => '/admin'], function () {
+        Route::get('/dashboard', [AdminController::class, 'dashboard']);
+        Route::get('/', fn () => redirect('/dashboard'));
+    })->middleware('isAdmin');
 });
