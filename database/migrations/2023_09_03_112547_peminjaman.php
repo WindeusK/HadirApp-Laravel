@@ -14,7 +14,7 @@ return new class extends Migration
         $table->id();
         $table->string('judul_buku');
         $table->integer('jumlah');
-        $table->foreignId('id_peminjam')->constrained('siswa');
+        $table->foreignId('id_peminjam')->constrained('user');
         $table->dateTime('tanggal_pinjam');
         $table->dateTime('batas_pinjam');
         $table->dateTime('tanggal_kembali')->nullable();
