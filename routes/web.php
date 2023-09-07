@@ -15,6 +15,8 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+Route::get('/', fn () => view('welcome-page'));
+
 Route::get('/login', [LoginController::class, 'getLoginPage'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
