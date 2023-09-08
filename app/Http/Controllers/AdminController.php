@@ -40,4 +40,23 @@ class DashboardController extends Controller
 
         return view('admin.buku-index', ['info_buku' => $buku]);
     }
+
+    /**
+     * Melakukan update kepada buku yang dipilih
+     */
+    public function edit (int $id, Request $request) {
+        $data = $request->validate([
+            'judul' => 'required|string',
+            'isbn' => 'required|max:13|numeric',
+            'jumlah' => 'required|numeric',
+            'penulis' => 'required|string',
+            'sinopsis' => 'string'
+        ]);
+
+        $buku = Buku::find($id);
+        
+        $buku->update($data);
+
+        return view('admin.buku-index')->with('success', 'Berhasil melakukan update kepada data buku!');
+    }
 }
