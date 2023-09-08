@@ -1,13 +1,8 @@
 @extends('layout.main')
 
 @section('content')
-    <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div>
-
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+     <!-- Navbar -->
+     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -93,32 +88,19 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="./pinjam.html" class="nav-link">
+                  <a href="/list-peminjaman" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>List Peminjaman</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./index.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Peminjaman</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="./tambah.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Tambah Buku</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="./buku.html" class="nav-link active">
+                  <a href="/list-buku" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>List buku</p>
                   </a>
                 </li>
               </ul>
             </li>
-
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -153,19 +135,19 @@
               <table class="table table-bordered">
                 <thead class="text-sm text-sm-center">
                   <th>No</th>
+                  <th>Nama</th>
                   <th>Kode</th>
                   <th>Judul buku</th>
-                  <th>penulis</th>
-                  <th>penerbit</th>
-                  <th>Tahun terbit</th>
+                  <th>TGl Pinjam</th>
+                  <th>TGL Kembali</th>
                   <th>Data</th>
                 </thead>
                 <tr class="text-sm-center">
                   <td>1</td>
-                  <td>12121</td>
+                  <td>herno</td>
+                  <td>123</td>
                   <td>adasaja</td>
-                  <td>adasaja</td>
-                  <td>aku suka</td>
+                  <td>122121</td>
                   <td>122121</td>
                   <td>
                     <button class="btn btn-warning">edit</button>
@@ -179,24 +161,4 @@
         </div>
       </section>
       <!-- /.content -->
-    </div>
 @endsection
-
-    
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <strong>Copyright &copy;<a href="https://smkn1tanjungpandan.sch.id/">Smk Negeri 1 Tanjung Pandan <script>document.write(new Date().getFullYear());</script></a>.</strong>
-    </footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-  </div>
-  <!-- ./wrapper -->
-
-
-</body>
-
-</html>
