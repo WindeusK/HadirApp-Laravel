@@ -17,4 +17,14 @@ class DashboardController extends Controller
             'preview_peminjaman' => Peminjaman::take()->get()
         ]);
     }
+
+    /**
+     * Untuk melihat dashboard dari koleksi
+     * data semua buku.
+     */
+    public function buku () {
+        return view('admin.buku', [
+            'info_buku' => Buku::all()
+        ]);
+    }
 }

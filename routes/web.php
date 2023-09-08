@@ -26,6 +26,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     //Admin Page
     Route::group(['prefix' => '/admin'], function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard']);
+        Route::get('/dashboard/buku', [AdminController::class, 'buku']);
+
         Route::get('/', fn () => redirect('/dashboard'));
     })->middleware('isAdmin');
 });
