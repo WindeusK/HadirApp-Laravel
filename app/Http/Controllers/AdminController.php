@@ -10,6 +10,10 @@ use App\Models\Peminjaman;
 
 class DashboardController extends Controller
 {
+    /**
+     * Untuk melihat profile admin dan 
+     * melihat preview data buku dan peminjaman
+     */
     public function dashboard () {
         return view('admin.dashboard', [
             'admin_info' => User::find(Auth::id()),
