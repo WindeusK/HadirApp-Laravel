@@ -15,8 +15,9 @@ class DashboardController extends Controller
      * melihat preview data buku dan peminjaman
      */
     public function dashboard () {
-        return view('admin', [
-            // 'admin_info' => User::find(Auth::id()),
+        return view('dasboard', [
+            'admin' => User::find(Auth::id()),
+            'tambah_buku' => Buku::take()->post(),
             'list-buku' => Buku::take(10)->get(),
             'list-peminjaman' => Peminjaman::take()->get()
         ]);

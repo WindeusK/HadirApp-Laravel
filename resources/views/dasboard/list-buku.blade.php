@@ -88,9 +88,21 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
+                  <a href="/admin" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Admin</p>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a href="/list-peminjaman" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>List Peminjaman</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/tambah_buku" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>List buku</p>
                   </a>
                 </li>
                 <li class="nav-item">
