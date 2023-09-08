@@ -29,6 +29,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::group(['prefix' => '/dashboard'], function () {
             Route::get('/', [AdminController::class, 'dashboard']);
             Route::get('/buku', [AdminController::class, 'buku']);
+            Route::get('/buku/{id}', [AdminController::class, 'indexBuku']);
         });
 
         Route::get('/', fn () => redirect('/dashboard'));

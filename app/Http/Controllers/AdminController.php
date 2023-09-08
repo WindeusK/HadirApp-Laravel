@@ -31,4 +31,13 @@ class DashboardController extends Controller
             'info_buku' => Buku::all()
         ]);
     }
+
+    /**
+     * Untuk melihat data individu buku
+     */
+    public function indexBuku (int $id) {
+        $buku = Buku::find($id);
+
+        return view('admin.buku-index', ['info_buku' => $buku]);
+    }
 }
