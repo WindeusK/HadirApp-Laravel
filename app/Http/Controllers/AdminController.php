@@ -78,5 +78,14 @@ class DashboardController extends Controller
         return view('admin.tambah-buku')->with('success', 'Berhasil menambahkan buku!');
     }
 
-    
+    /**
+     * Hapus Buku
+     */
+    public function hapus (int $id) {
+        $buku = Buku::find($id);
+
+        $buku->delete();
+
+        return view ('admin.list-buku')->with('success', ("Buku dengan judul '" . $buku->judul . "' berhasil dihapus."));
+    }
 }

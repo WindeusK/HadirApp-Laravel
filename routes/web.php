@@ -41,6 +41,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
             // Edit Buku (UPDATE)
             Route::post('/buku/{id}', [AdminController::class, 'edit']);
+
+            // Hapus Buku (DELETE)
+            Route::delete('/buku/{id}', [AdminController::class, 'hapus']);
         });
 
         Route::get('/', fn () => redirect('/dashboard'));
