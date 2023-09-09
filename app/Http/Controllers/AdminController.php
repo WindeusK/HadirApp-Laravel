@@ -132,4 +132,15 @@ class DashboardController extends Controller
 
         return view ('admin.peminjaman', ['data_peminjaman' => $peminjaman]);
     }
+
+    /**
+     * Untuk menandai bahwa peminjaman telah dikembalikan
+     */
+    public function kembali (int $id_peminjaman) {
+        $peminjaman = Peminjaman::find($id_peminjaman);
+
+        $peminjaman->tanggal_kembali = now();
+        
+        return view('admin.peminjaman')->with('success', 'Peminjaman berhasil ditandai selesai');
+    }
 }

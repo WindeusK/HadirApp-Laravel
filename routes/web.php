@@ -55,6 +55,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::post('/pinjam/{id_buku}', fn () => view('admin.pinjam'));
 
             Route::get('/peminjaman/{id_peminjaman}', [AdminController::class, 'peminjaman']);
+            Route::post('/peminjaman/{id_peminjaman}', [AdminController::class, 'kembali']);
         });
 
         Route::get('/', fn () => redirect('/dashboard'));
