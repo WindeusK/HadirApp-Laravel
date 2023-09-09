@@ -50,6 +50,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
                 Route::delete('/buku/{id}', [AdminController::class, 'hapus']);
 
             });
+
+            Route::get('/peminjaman', fn() => view('admin.peminjaman'));
+
+            Route::get('/peminjaman/{id_peminjaman}');
         });
 
         Route::get('/', fn () => redirect('/dashboard'));

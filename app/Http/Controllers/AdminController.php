@@ -88,4 +88,13 @@ class DashboardController extends Controller
 
         return view ('admin.list-buku')->with('success', ("Buku dengan judul '" . $buku->judul . "' berhasil dihapus."));
     }
+
+    /**
+     * Untuk melihat data peminjaman
+     */
+    public function peminjaman (int $id_peminjaman) {
+        $peminjaman = Peminjaman::find($id_peminjaman);
+
+        return view ('admin.peminjaman', ['data_peminjaman' => $peminjaman]);
+    }
 }
