@@ -15,10 +15,11 @@ class DashboardController extends Controller
      * melihat preview data buku dan peminjaman
      */
     public function dashboard () {
-        return view('admin.dashboard', [
-            'admin_info' => User::find(Auth::id()),
-            'preview_buku' => Buku::take(10)->get(),
-            'preview_peminjaman' => Peminjaman::take()->get()
+        return view('dasboard', [
+            'admin' => User::find(Auth::id()),
+            'tambah_buku' => Buku::take()->post(),
+            'list-buku' => Buku::take(10)->get(),
+            'list-peminjaman' => Peminjaman::take()->get()
         ]);
     }
 
@@ -27,8 +28,8 @@ class DashboardController extends Controller
      * data semua buku.
      */
     public function buku () {
-        return view('admin.buku', [
-            'info_buku' => Buku::all()
+        return view('admin.list-buku', [
+            'list-buku' => Buku::all()
         ]);
     }
 
@@ -38,7 +39,7 @@ class DashboardController extends Controller
     public function indexBuku (int $id) {
         $buku = Buku::find($id);
 
-        return view('admin.buku-index', ['info_buku' => $buku]);
+        return view('admin.list-buku', ['info_buku' => $buku]);
     }
 
     /**
