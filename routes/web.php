@@ -28,7 +28,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
         Route::group(['prefix' => '/dashboard'], function () {
             Route::get('/', [AdminController::class, 'dashboard']);
+
             Route::get('/buku', [AdminController::class, 'buku']);
+
+            Route::get('/buku/tambah', fn () => view('admin.tambah-buku'));
+
             Route::get('/buku/{id}', [AdminController::class, 'indexBuku']);
             Route::post('/buku/{id}', [AdminController::class, 'edit']);
         });

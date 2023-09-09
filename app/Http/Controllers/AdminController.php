@@ -59,4 +59,21 @@ class DashboardController extends Controller
 
         return view('admin.buku-index')->with('success', 'Berhasil melakukan update kepada data buku!');
     }
+
+    /**
+     * Menambahkan buku baru
+     */
+    public function tambahBuku (int $id, Request $request) {
+        $data = $request->validate([
+            'judul' => 'required|string',
+            'isbn' => 'required|max:13|numeric',
+            'jumlah' => 'required|numeric',
+            'penulis' => 'required|string',
+            'sinopsis' => 'string'
+        ]);
+
+        Buku::create($data);
+
+        return view('admin.tambah-buku')->with('success', 'Berhasil menambahkan buku!');
+    }
 }
