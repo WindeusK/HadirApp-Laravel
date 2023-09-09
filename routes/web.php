@@ -29,12 +29,17 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::group(['prefix' => '/dashboard'], function () {
             Route::get('/', [AdminController::class, 'dashboard']);
 
+            // Index semua buku (READ)
             Route::get('/buku', [AdminController::class, 'buku']);
 
+            // Tambah Buku (CREATE)
             Route::get('/buku/tambah', fn () => view('admin.tambah-buku'));
             Route::post('/buku/tambah', [AdminController::class, 'tambahBuku']);
 
+            // Index Buku Individu (READ)
             Route::get('/buku/{id}', [AdminController::class, 'indexBuku']);
+
+            // Edit Buku (UPDATE)
             Route::post('/buku/{id}', [AdminController::class, 'edit']);
         });
 

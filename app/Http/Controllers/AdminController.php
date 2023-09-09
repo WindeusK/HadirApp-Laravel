@@ -77,4 +77,6 @@ class DashboardController extends Controller
 
         return view('admin.tambah-buku')->with('success', 'Berhasil menambahkan buku!');
     }
+
+    
 }
