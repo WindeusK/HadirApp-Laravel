@@ -90,6 +90,41 @@ class DashboardController extends Controller
     }
 
     /**
+     * Untuk meminjam buku
+     */
+    public function pinjam (int $id_buku, Request $request) {
+        $request->validate([
+            'jumlah' => 'required|numeric',
+            'id_peminjam' => 'required|numeric',
+            'tanggal_pinjam' => 'required|date',
+            'batas_pinjam' => 'required|date',
+            'tanggal_kembali' => 'date'
+        ]);
+
+        $buku = Buku::find($id_buku);
+
+        if (!$buku) {
+            return view('admin.list-peminjaman')->with('error', 'Buku dengan ID ini tidak ditemukan');
+        }
+
+        if (($buku->jumlah - $request->jumlah) < 0) {
+            return view('admin.list-peminjaman')->with('error', 'Jumlah peminjaman melebihi stok buku');
+        }
+
+        Peminjaman::create([
+            'judul_buku' => $buku->judul,
+            'jumlah' => $request->jumlah,
+            'id_peminjam' => $request->id_peminjam,
+            'tanggal_pinjam' => $request->tanggal_pinjam,
+            'batas_pinjam' => $request->batas_pinjam,
+        ]);
+
+        $buku->jumlah -= $request->jumlah;
+
+        return view('admin.list-peminjaman')->with('success', 'Buku berhasil dipinjam');
+    }
+
+    /**
      * Untuk melihat data peminjaman
      */
     public function peminjaman (int $id_peminjaman) {
