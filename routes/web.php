@@ -27,23 +27,29 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::group(['prefix' => '/admin'], function () {
 
         Route::group(['prefix' => '/dashboard'], function () {
+            
             Route::get('/', [AdminController::class, 'dashboard']);
 
-            // Index semua buku (READ)
-            Route::get('/buku', [AdminController::class, 'buku']);
+            // Buku Routes Group
+            Route::group(['prefix' => '/buku'], function () {
 
-            // Tambah Buku (CREATE)
-            Route::get('/buku/tambah', fn () => view('admin.tambah-buku'));
-            Route::post('/buku/tambah', [AdminController::class, 'tambahBuku']);
+                // Index semua buku (READ)
+                Route::get('/buku', [AdminController::class, 'buku']);
 
-            // Index Buku Individu (READ)
-            Route::get('/buku/{id}', [AdminController::class, 'indexBuku']);
+                // Tambah Buku (CREATE)
+                Route::get('/buku/tambah', fn () => view('admin.tambah-buku'));
+                Route::post('/buku/tambah', [AdminController::class, 'tambahBuku']);
 
-            // Edit Buku (UPDATE)
-            Route::post('/buku/{id}', [AdminController::class, 'edit']);
+                // Index Buku Individu (READ)
+                Route::get('/buku/{id}', [AdminController::class, 'indexBuku']);
 
-            // Hapus Buku (DELETE)
-            Route::delete('/buku/{id}', [AdminController::class, 'hapus']);
+                // Edit Buku (UPDATE)
+                Route::post('/buku/{id}', [AdminController::class, 'edit']);
+
+                // Hapus Buku (DELETE)
+                Route::delete('/buku/{id}', [AdminController::class, 'hapus']);
+
+            });
         });
 
         Route::get('/', fn () => redirect('/dashboard'));
