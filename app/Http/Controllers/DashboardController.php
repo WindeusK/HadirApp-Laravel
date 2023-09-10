@@ -35,4 +35,24 @@ class DashboardController extends Controller
 
         return view('dashboard.peminjaman', ['data' => $peminjaman]);
     }
+
+    public function kembalikanPeminjaman(Request $request)
+    {
+        $request->validate([
+            'id_peminjaman' => 'required|numeric',
+            'id_peminjam' => 'required|numeric'
+        ]);
+
+        $peminjaman = Peminjaman::where('id', '=', $request->id_peminjaman)
+            ->where('id_peminjam', '=', $request->id_peminjam)
+            ->get();
+
+        if (!$peminjaman) {
+            return view('dashboard.peminjaman')->with('error', 'ID Peminjaman tidak berhasil ditemukan!');
+        }
+
+        $peminjaman->tanggal_kembali = now();
+
+        return view('dashboard.peminjaman')->with('success', 'Terima kasih telah mengembalikan buku!');
+    }
 }

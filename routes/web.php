@@ -25,6 +25,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
     Route::get('/buku', [DashboardController::class, 'buku']);
     Route::get('/peminjaman', [DashboardController::class, 'lihatPeminjaman']);
+    Route::post('/peminjaman', [DashboardController::class, 'kembalikanPeminjaman']);
 
     //Admin Page
     Route::group(['prefix' => '/admin'], function () {
