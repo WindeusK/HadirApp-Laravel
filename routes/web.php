@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,13 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
     Route::get('/buku', [DashboardController::class, 'buku']);
+    Route::get('/peminjaman', [DashboardController::class, 'lihatPeminjaman']);
 
     //Admin Page
     Route::group(['prefix' => '/admin'], function () {
 
         Route::group(['prefix' => '/dashboard'], function () {
-            
+
             Route::get('/', [AdminController::class, 'dashboard']);
 
             // Buku Routes Group
@@ -49,10 +51,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
                 // Hapus Buku (DELETE)
                 Route::delete('/buku/{id}', [AdminController::class, 'hapus']);
-
             });
 
-            Route::get('/peminjaman', fn() => view('admin.peminjaman'));
+            Route::get('/peminjaman', fn () => view('admin.peminjaman'));
             Route::post('/pinjam/{id_buku}', fn () => view('admin.pinjam'));
 
             Route::get('/peminjaman/{id_peminjaman}', [AdminController::class, 'peminjaman']);
@@ -60,6 +61,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
         });
 
         Route::get('/', fn () => redirect('/dashboard'));
-
     })->middleware('isAdmin');
 });
