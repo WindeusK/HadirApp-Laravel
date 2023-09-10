@@ -1,8 +1,8 @@
 @extends('layout.main')
 
 @section('content')
-     <!-- Navbar -->
-     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -49,7 +49,7 @@
       <a href="index3.html" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
           style="opacity: .8">
-        <span class="brand-text font-weight-light">petugas</span>
+        <span class="brand-text font-weight-light">Petugas</span>
       </a>
 
       <!-- Sidebar -->
@@ -89,7 +89,7 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="/admin" class="nav-link">
-                    <i class="far fa-circle nav-icon "></i>
+                    <i class="far fa-circle nav-icon"></i>
                     <p>Admin</p>
                   </a>
                 </li>
@@ -100,13 +100,19 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/tambah_buku" class="nav-link active">
+                  <a href="/tambah_peminjaman" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>List buku</p>
+                    <p>Tambah Peminjam</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/list-buku" class="nav-link ">
+                  <a href="/tambah_buku" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tambah buku</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/list-buku" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>List buku</p>
                   </a>
@@ -144,29 +150,54 @@
       <section class="content">
         <div class="container-fluid">
           <div class="row-cols-1">
-            <div class="card"> 
-              <h4 class="mt-3 ml-4 text-bold h5">Tambah Buku</h4>
-              <label for="" class="mt-4 ml-4">
-                Kode <input type="number" name="kode" placeholder="data wajib diisi" class="ml-4 input-group-lg pl-5 text-sm-left">
-              </label> 
-               <label for="" class="mt-3 ml-4">
-                Judul <input type="text" name="judul" placeholder="data wajib diisi" class="ml-4 input-group-lg pl-5 text-sm-left">
-              </label> 
-               <label for="" class="mt-3 ml-4">
-                Penulis <input type="text" name="penulis" placeholder="data wajib diisi" class="ml-3 input-group-lg pl-5 text-sm-left">
-              </label>
-               <label for="" class="mt-3 ml-4">
-                Penerbit <input type="text" name="penerbit" placeholder="data wajib diisi" class="ml-2 input-group-lg pl-5 text-sm-left">
-              </label>
-               <label for="" class="mt-3 ml-4">
-                Tahun  <input type="date" name="tahun" placeholder="data wajib diisi" class="ml-4 input-group-lg pl-5 text-sm-left">
-              </label>
-              <label for="" class="mt-4 ml-4 mb-4">
-                <button class="btn btn-primary">Kirim</button>
-              </label>
+            <div class="card">
+              <table class="table table-bordered">
+                <thead class="text-sm text-sm-center">
+                  <th>No</th>
+                  <th>Kode</th>
+                  <th>Judul buku</th>
+                  <th>penulis</th>
+                  <th>penerbit</th>
+                  <th>Tahun terbit</th>
+                  <th>Data</th>
+                </thead>
+                <tr class="text-sm-center">
+                  <td>1</td>
+                  <td>12121</td>
+                  <td>adasaja</td>
+                  <td>adasaja</td>
+                  <td>aku suka</td>
+                  <td>122121</td>
+                  <td>
+                    <button class="btn btn-warning">edit</button>
+                    <button class="btn btn-danger">hapus</button>
+
+                  </td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>
       </section>
       <!-- /.content -->
+    </div>
 @endsection
+
+    
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <strong>Copyright &copy;<a href="https://smkn1tanjungpandan.sch.id/">Smk Negeri 1 Tanjung Pandan <script>document.write(new Date().getFullYear());</script></a>.</strong>
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+
+</body>
+
+</html>

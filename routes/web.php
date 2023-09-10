@@ -41,7 +41,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
                 Route::get('/buku', [AdminController::class, 'buku']);
 
                 // Tambah Buku (CREATE)
-                Route::get('/buku/tambah', fn () => view('admin.tambah-buku'));
+                Route::get('/buku/tambah', fn () => view('dashboard.tambah-buku'));
                 Route::post('/buku/tambah', [AdminController::class, 'tambahBuku']);
 
                 // Index Buku Individu (READ)
@@ -54,8 +54,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
                 Route::delete('/buku/{id}', [AdminController::class, 'hapus']);
             });
 
-            Route::get('/peminjaman', fn () => view('admin.peminjaman'));
-            Route::post('/pinjam/{id_buku}', fn () => view('admin.pinjam'));
+            Route::get('/peminjaman', fn () => view('dashboard.tambah_peminjam'));
+            Route::post('/pinjam/{id_buku}', fn () => view('dashboard.list-peminjaman   '));
 
             Route::get('/peminjaman/{id_peminjaman}', [AdminController::class, 'peminjaman']);
             Route::post('/peminjaman/{id_peminjaman}', [AdminController::class, 'kembali']);

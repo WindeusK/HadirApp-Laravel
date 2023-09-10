@@ -15,10 +15,11 @@ class DashboardController extends Controller
      * melihat preview data buku dan peminjaman
      */
     public function dashboard () {
-        return view('dasboard', [
+        return view('dashboard', [
             'admin' => User::find(Auth::id()),
-            'tambah_buku' => Buku::take()->post(),
+            'tambah_buku' => Buku::take()->get(),
             'list-buku' => Buku::take(10)->get(),
+            'tambah_peminjam' => Peminjaman::take()->get(),
             'list-peminjaman' => Peminjaman::take()->get()
         ]);
     }
@@ -28,7 +29,7 @@ class DashboardController extends Controller
      * data semua buku.
      */
     public function buku () {
-        return view('admin.list-buku', [
+        return view('dashboard.list-buku', [
             'list-buku' => Buku::all()
         ]);
     }
@@ -39,7 +40,7 @@ class DashboardController extends Controller
     public function indexBuku (int $id) {
         $buku = Buku::find($id);
 
-        return view('admin.list-buku', ['info_buku' => $buku]);
+        return view('dashboard.list-buku', ['info_buku' => $buku]);
     }
 
     /**
@@ -58,7 +59,7 @@ class DashboardController extends Controller
         
         $buku->update($data);
 
-        return view('admin.buku-index')->with('success', 'Berhasil melakukan update kepada data buku!');
+        return view('dashboard.buku-index')->with('success', 'Berhasil melakukan update kepada data buku!');
     }
 
     /**
@@ -75,7 +76,7 @@ class DashboardController extends Controller
 
         Buku::create($data);
 
-        return view('admin.tambah-buku')->with('success', 'Berhasil menambahkan buku!');
+        return view('dashboard.tambah-buku')->with('success', 'Berhasil menambahkan buku!');
     }
 
     /**
@@ -86,7 +87,7 @@ class DashboardController extends Controller
 
         $buku->delete();
 
-        return view ('admin.list-buku')->with('success', ("Buku dengan judul '" . $buku->judul . "' berhasil dihapus."));
+        return view ('dashboard.list-buku')->with('success', ("Buku dengan judul '" . $buku->judul . "' berhasil dihapus."));
     }
 
     /**
@@ -104,11 +105,11 @@ class DashboardController extends Controller
         $buku = Buku::find($id_buku);
 
         if (!$buku) {
-            return view('admin.list-peminjaman')->with('error', 'Buku dengan ID ini tidak ditemukan');
+            return view('dashboard.tambah_peminjamn')->with('error', 'Buku dengan ID ini tidak ditemukan');
         }
 
         if (($buku->jumlah - $request->jumlah) < 0) {
-            return view('admin.list-peminjaman')->with('error', 'Jumlah peminjaman melebihi stok buku');
+            return view('dashboard.tambah_peminjamn')->with('error', 'Jumlah peminjaman melebihi stok buku');
         }
 
         Peminjaman::create([
@@ -121,7 +122,7 @@ class DashboardController extends Controller
 
         $buku->jumlah -= $request->jumlah;
 
-        return view('admin.list-peminjaman')->with('success', 'Buku berhasil dipinjam');
+        return view('dashboard.tambah_peminjamn')->with('success', 'Buku berhasil dipinjam');
     }
 
     /**
@@ -130,7 +131,7 @@ class DashboardController extends Controller
     public function peminjaman (int $id_peminjaman) {
         $peminjaman = Peminjaman::find($id_peminjaman);
 
-        return view ('admin.peminjaman', ['data_peminjaman' => $peminjaman]);
+        return view ('dashboard.list-peminjaman', ['data_peminjaman' => $peminjaman]);
     }
 
     /**
@@ -141,6 +142,6 @@ class DashboardController extends Controller
 
         $peminjaman->tanggal_kembali = now();
         
-        return view('admin.peminjaman')->with('success', 'Peminjaman berhasil ditandai selesai');
+        return view('dashboard.list-peminjaman')->with('success', 'Peminjaman berhasil ditandai selesai');
     }
 }

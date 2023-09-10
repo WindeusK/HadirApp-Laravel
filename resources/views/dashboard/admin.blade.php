@@ -100,9 +100,14 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="/tambah_peminjaman" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tambah Peminjam</p>
+                </a>
+              <li class="nav-item">
                 <a href="/tambah_buku" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List buku</p>
+                  <p>Tambah buku</p>
                 </a>
               </li>
               <li class="nav-item">
