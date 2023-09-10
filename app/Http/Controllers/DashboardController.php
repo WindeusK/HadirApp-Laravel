@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buku;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -16,5 +17,10 @@ class DashboardController extends Controller
         } else {
             return view('siswa', ['user' => $user]);
         }
+    }
+
+    public function buku () {
+        $buku = Buku::paginate(15);
+        return view ('dashboard.buku', ['buku' => $buku]);
     }
 }
