@@ -31,7 +31,7 @@ class DashboardController extends Controller
     {
         $user_id = Auth::id();
 
-        $peminjaman = Peminjaman::where('id', '=', $user_id)->get();
+        $peminjaman = Peminjaman::where('id_peminjam', '=', $user_id)->get();
 
         return view('dashboard.peminjaman', ['data' => $peminjaman]);
     }
